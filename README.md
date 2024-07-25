@@ -1,5 +1,7 @@
 # Gym App
 
+**Note:** This is an introductory project to Tkinter and MySQL, aimed at demonstrating basic integration and functionality. It is not intended for production use.
+
 Gym App is a graphical user interface (GUI) built using Python and Tkinter. The application allows users to manage client information, including adding, updating, and deleting client records. The client data is stored in a MySQL database, and the app includes features such as form validation, data display in a table, and user notifications.
 
 ## Features
@@ -16,7 +18,7 @@ Gym App is a graphical user interface (GUI) built using Python and Tkinter. The 
 1. Clone the repository:
     ```sh
     git clone https://github.com/DnelZpt/gui-with-mySQL.git
-    cd gym-app
+    cd gui-with-mySQL/project_gym
     ```
 
 4. Set up the MySQL database:
