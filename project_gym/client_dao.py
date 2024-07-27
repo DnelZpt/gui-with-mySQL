@@ -1,5 +1,5 @@
-from client_cls import Client
-from connections_pool import ConnectionPool
+from project_gym.client_cls import Client
+from project_gym.connections_pool import ConnectionPool
 
 
 class ClientDAO:

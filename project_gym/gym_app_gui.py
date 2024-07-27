@@ -6,8 +6,8 @@ Daniel Zapata - 2024
 
 from tkinter import ttk
 from tkinter.messagebox import showerror, showinfo
-from client_cls import Client
-from client_dao import ClientDAO
+from project_gym.client_cls import Client
+from project_gym.client_dao import ClientDAO
 import tkinter as tk
 
 
