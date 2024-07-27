@@ -4,6 +4,7 @@ from project_gym.connections_pool import ConnectionPool
 
 class ClientDAO:
     SELECT_ALL = "SELECT * FROM clients"
+    SELECT_ID = "SELECT * FROM clients WHERE id = %s"
     INSERT = "INSERT INTO clients (name, last_name, membership) VALUES (%s, %s, %s)"
     DELETE = "DELETE FROM clients WHERE id = %s"
     UPDATE = "UPDATE clients SET name = %s, last_name = %s, membership = %s WHERE id = %s"
@@ -30,6 +31,33 @@ class ClientDAO:
 
             return clientes
 
+        except Exception as e:
+            print(e)
+        finally:
+            if connection is not None:
+                cursor.close()
+                ConnectionPool.release_connection(connection)
+
+    @classmethod
+    def select_by_id(cls, client_id):
+        """
+        Retrieves a client from the database by its ID.
+
+        This method fetches a client from the database using the provided client ID and returns it as a Client object.
+
+        :param: client_id (int): The ID of the client to retrieve from the database.
+
+        :return:
+            Client: A Client object representing the client with the provided ID.
+        """
+        connection = None
+        try:
+            connection = ConnectionPool.get_connection()
+            cursor = connection.cursor()
+            cursor.execute(cls.SELECT_ID, (client_id,))
+            record = cursor.fetchone()
+            if record is not None:
+                return Client(record[0], record[1], record[2], record[3])
         except Exception as e:
             print(e)
         finally:
