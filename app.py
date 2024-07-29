@@ -52,6 +52,15 @@ def edit(id):
     return render_template('index.html', title=app_title, form=form, clients=clients_db)
 
 
+@app.route('/delete/<int:id>', methods=['GET'])  # url: http://localhost:5000/delete/1
+def delete(id):
+    print(id)
+    app.logger.debug('delete() called')
+    client = ClientDAO.select_by_id(id)
+    ClientDAO.delete(client)
+    return redirect(url_for('index'))
+
+
 @app.route('/clear')  # url: http://localhost:5000/clear
 def clear():
     app.logger.debug('clear() called')
