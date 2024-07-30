@@ -39,7 +39,11 @@ def save():
     if form.validate_on_submit():
         # Populate the client object with the form data
         form.populate_obj(client)
-        ClientDAO.insert(client)
+        if client.id:
+            # If the client has an id, update it
+            ClientDAO.update(client)
+        else:
+            ClientDAO.insert(client)
     return redirect(url_for('index'))
 
 

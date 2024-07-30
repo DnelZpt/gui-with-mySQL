@@ -23,6 +23,7 @@
                 <form action="/save" method="post" autocomplete="off">
                     {{ form.csrf_token }}
                     <!-- Name-->
+                    {{form.id()}}
                     <div class="form-floating py-2">
                         <!--                       <input type="text" class="form-control" id="Name" placeholder="Name"/>-->
                         <!--                        <label for="Name">Name</label>-->
